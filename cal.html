@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cal.css">
+    <title>Document</title>
+</head>
+<body>
+   
+    <h1 id="cal">CALCULATRICE TELEGRAMME KTLO10</h1>
+    <section>
+        <input id="input-screen" type="text" value="0" readonly>
+        <div class="buttom">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button id="supp_on" onclick="supp_one()">⌫</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+
+        <button>1</button> 
+        <button>2</button>
+        <button>3</button>
+        <button>*</button>
+
+        <button>0</button>
+        <button id="clear" onclick="supp()">C</button>
+        <button>/</button>
+        <button id="egal" onclick="calcul()">=</button>
+        <button>.</button>
+        <button>+</button>
+
+        </div>
+    </section>
+    <script>
+     let screen=document.getElementById("input-screen"); //recupere les element dans le input
+     let boutons= document.querySelectorAll("button"); //recupere les bouton
+     boutons.forEach(function(button){ //parcoure tous les boutons
+        button.addEventListener("click",function(){
+            screen.value+=button.textContent //je click autant de fois que je le veux
+            console.log(screen.value);// affiche a l'ecran
+        });
+        
+     });
+/* pour afficher un element a l'ecran:
+    on recupere avec variable=doc.getELEMENTby(id ecran);
+
+    on recupere pour le bouton avec variable_bouton=doc.getELEMENTby('id bouton');
+    variable_bouton.addEventListener("click",function(){var_ecran.value='4';});
+
+
+ */
+    // fonction supprimer  Jj
+    function supp (){
+    
+      screen.value=""
+    
+    
+        }
+     clear.addEventListener("click", supp);
+    
+    
+
+
+    // fonction calcul
+    function calcul(){
+        let resultat=eval(screen.value);
+        screen.value=resultat
+    }
+    egal.addEventListener("click",calcul)
+    // supprimer un element
+
+    function supp_one(){
+        screen.value= screen.value.slice(0,-1);
+    }
+    supp_on.addEventListener("click",supp_one);
+    </script>
+    
+</body>
+</html>
